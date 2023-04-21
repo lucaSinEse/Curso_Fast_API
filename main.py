@@ -35,7 +35,20 @@ def get_movies():
 
 @app.get('/movies/{id}', tags=['movies'])
 def get_movie(id:int):
-    for item in movies:
+    return list(filter(lambda item: item['id'] == id, movies))
+    
+    '''for item in movies:
         if item['id'] == id:
             return item
     return[]
+    '''
+
+@app.get('/movies/',tags=['movies'])
+def get_movies_by_category(category: str):
+    
+    return list(filter(lambda item: item['category'] == category, movies))
+    
+    '''for item in movies:
+        if item['category'] == category:
+            return item
+    return []'''
